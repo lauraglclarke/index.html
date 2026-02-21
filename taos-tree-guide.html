@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trees for Northern New Mexico · Taos Area Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f6f5f2;--surface:#fff;--border:#e5e1d8;
+  --text:#1a1a18;--text2:#5f5c55;--text3:#9a9690;
+  --green:#3a6644;--green-light:#eef4f0;--green-mid:#c0d8c6;
+  --gold:#b8821e;--gold-bg:#fdf8ee;--gold-border:#e5d098;
+  --inv:#7a1f1f;--inv-bg:#fdf0f0;--inv-border:#e8c0c0;
+  --nat:#1a4d6e;--nat-bg:#eef5fb;--nat-border:#b8d4e8;
+  --dh:#2a6335;--dh-bg:#e8f5eb;--dh-bd:#a8d4b0;
+  --dm:#7a5c10;--dm-bg:#fef8e8;--dm-bd:#e0c870;
+  --dl:#8b2020;--dl-bg:#fdecea;--dl-bd:#e8b0b0;
+  --shadow:0 1px 3px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.05);
+  --shadow-h:0 4px 12px rgba(0,0,0,.09),0 12px 40px rgba(0,0,0,.08);
+  --r:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6}
+
+/* ── HEADER ── */
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 28px;position:sticky;top:0;z-index:100}
+.hdr{max-width:1440px;margin:0 auto;display:flex;align-items:center;gap:20px;height:62px;flex-wrap:wrap}
+.logo{font-family:'Lora',serif;font-size:17px;font-weight:600;color:var(--green);white-space:nowrap;flex-shrink:0}
+.hdiv{width:1px;height:24px;background:var(--border);flex-shrink:0}
+.controls{display:flex;align-items:center;gap:10px;flex:1;flex-wrap:wrap}
+
+/* search */
+.sw{position:relative;flex:1;max-width:280px}
+.sw svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none}
+input[type=search]{width:100%;padding:8px 10px 8px 32px;border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:13px;background:var(--bg);color:var(--text);outline:none;transition:border-color .15s,box-shadow .15s}
+input[type=search]:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(58,102,68,.1)}
+input[type=search]::placeholder{color:var(--text3)}
+
+/* filter buttons */
+.fbtn{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:7px;border:1px solid var(--border);background:var(--surface);font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s;white-space:nowrap}
+.fbtn:hover{border-color:var(--green);color:var(--green);background:var(--green-light)}
+.fbtn.act-gold{background:var(--gold-bg);border-color:var(--gold-border);color:var(--gold)}
+.fbtn.act-green{background:var(--nat-bg);border-color:var(--nat-border);color:var(--nat)}
+.fbtn.act-red{background:var(--inv-bg);border-color:var(--inv-border);color:var(--inv)}
+
+/* drought chips */
+.dchips{display:flex;gap:5px;align-items:center}
+.dchip{padding:5px 11px;border-radius:20px;border:1.5px solid transparent;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;opacity:.4}
+.dchip.on{opacity:1;box-shadow:0 0 0 1.5px currentColor}
+.dchip.h{background:var(--dh-bg);color:var(--dh);border-color:var(--dh-bd)}
+.dchip.m{background:var(--dm-bg);color:var(--dm);border-color:var(--dm-bd)}
+.dchip.l{background:var(--dl-bg);color:var(--dl);border-color:var(--dl-bd)}
+
+.rc{margin-left:auto;font-size:12px;color:var(--text3);white-space:nowrap;flex-shrink:0}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#162e1c 0%,#2a5436 55%,#3a6644 100%);color:#fff;padding:52px 28px 44px;text-align:center}
+.hero h1{font-family:'Lora',serif;font-size:clamp(26px,4vw,44px);font-weight:600;letter-spacing:-.02em;margin-bottom:10px}
+.hero p{font-size:14.5px;opacity:.72;font-weight:300;max-width:520px;margin:0 auto 28px;line-height:1.75}
+.hstats{display:flex;justify-content:center;gap:36px;flex-wrap:wrap}
+.hstat-n{font-family:'Lora',serif;font-size:28px;font-weight:600;display:block}
+.hstat-l{font-size:11px;opacity:.6;text-transform:uppercase;letter-spacing:.08em}
+
+/* ── LEGEND ── */
+.legend{max-width:1440px;margin:0 auto;padding:14px 24px 6px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.leg-lbl{font-size:11.5px;color:var(--text3);font-weight:500}
+.leg-i{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--text2)}
+.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.leg-dot.dh{background:var(--dh)}.leg-dot.dm{background:var(--dm)}.leg-dot.dl{background:var(--dl)}
+.leg-dot.nat{background:var(--nat)}.leg-dot.inv{background:var(--inv)}.leg-dot.rec{background:var(--gold)}
+.leg-sep{width:1px;height:14px;background:var(--border)}
+
+/* ── GRID ── */
+.grid-wrap{max-width:1440px;margin:0 auto;padding:24px 20px 64px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+
+/* ── CARD ── */
+.card{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;animation:fu .3s ease both}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.card.is-rec{border-color:var(--gold-border)}
+.card.is-inv{border-color:var(--inv-border)}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* photo */
+.photo{position:relative;height:185px;overflow:hidden;background:var(--bg)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.card:hover .photo img{transform:scale(1.05)}
+.no-photo{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text3);font-size:11.5px}
+.no-photo svg{opacity:.25}
+
+/* photo badges */
+.pbadge{position:absolute;font-size:10.5px;font-weight:500;padding:3px 9px;border-radius:20px;backdrop-filter:blur(6px);line-height:1.4}
+.pbadge.rec{top:9px;right:9px;background:rgba(184,130,30,.9);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.pbadge.inv{top:9px;left:9px;background:rgba(122,31,31,.88);color:#fff}
+.pbadge.nat{top:9px;left:9px;background:rgba(26,77,110,.88);color:#fff}
+.pbadge.nat.has-inv{top:34px} /* stack below invasive badge */
+.drought-badge{position:absolute;bottom:9px;left:9px;font-size:10px;font-weight:500;padding:3px 9px;border-radius:20px}
+.drought-badge.High{background:rgba(232,245,235,.92);color:var(--dh)}
+.drought-badge.Medium{background:rgba(254,248,232,.92);color:var(--dm)}
+.drought-badge.Low{background:rgba(253,236,234,.92);color:var(--dl)}
+
+/* body */
+.cbody{padding:15px 16px 17px;flex:1;display:flex;flex-direction:column;gap:11px}
+.cname{font-family:'Lora',serif;font-size:16px;font-weight:600;line-height:1.25}
+.csci{font-size:11.5px;color:var(--text3);font-style:italic;margin-top:-7px}
+
+/* tag row */
+.tags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{font-size:10.5px;font-weight:500;padding:2px 8px;border-radius:20px;border:1px solid transparent}
+.tag.nat{background:var(--nat-bg);color:var(--nat);border-color:var(--nat-border)}
+.tag.inv{background:var(--inv-bg);color:var(--inv);border-color:var(--inv-border)}
+.tag.dh{background:var(--dh-bg);color:var(--dh);border-color:var(--dh-bd)}
+.tag.dm{background:var(--dm-bg);color:var(--dm);border-color:var(--dm-bd)}
+.tag.dl{background:var(--dl-bg);color:var(--dl);border-color:var(--dl-bd)}
+
+/* rec callout */
+.rec-box{background:var(--gold-bg);border-left:3px solid var(--gold);padding:6px 9px;border-radius:0 6px 6px 0;font-size:11.5px;color:#7a5010;font-style:italic;line-height:1.5}
+
+/* stats */
+.stats{display:flex;gap:7px}
+.stat{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:7px 8px;text-align:center}
+.stat-l{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);display:block;margin-bottom:1px}
+.stat-v{font-size:14px;font-weight:500;color:var(--text);font-family:'Lora',serif}
+.stat-u{font-size:9.5px;color:var(--text3)}
+
+/* notes */
+.cnotes{font-size:12.5px;color:var(--text2);line-height:1.62}
+.csrc{font-size:10.5px;color:var(--text3);margin-top:auto;padding-top:8px;border-top:1px solid var(--border)}
+
+/* empty */
+.empty{grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--text2)}
+.empty svg{opacity:.2;margin-bottom:14px}
+.empty h3{font-family:'Lora',serif;font-size:20px;font-weight:400;margin-bottom:6px}
+
+/* responsive */
+@media(max-width:860px){.hdr{height:auto;padding:10px 0;gap:10px}.hdiv,.rc{display:none}.controls{flex-wrap:wrap}}
+@media(max-width:540px){header{padding:0 14px}.grid-wrap{padding:16px 10px 48px}.hero{padding:36px 14px 28px}.hstats{gap:20px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr">
+    <span class="logo">Northern NM Tree Guide</span>
+    <div class="hdiv"></div>
+    <div class="controls">
+      <div class="sw">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" id="srch" placeholder="Search by name or scientific name…" autocomplete="off">
+      </div>
+      <button class="fbtn" id="recBtn">★ Taos Top Picks</button>
+      <button class="fbtn" id="natBtn">🌿 Native / Indigenous</button>
+      <button class="fbtn" id="invBtn">⚠ Invasive Tendency</button>
+      <div class="dchips" id="dchips">
+        <span style="font-size:11px;color:var(--text3);white-space:nowrap">Drought:</span>
+        <button class="dchip h on" data-d="High">High</button>
+        <button class="dchip m on" data-d="Medium">Med</button>
+        <button class="dchip l on" data-d="Low">Low</button>
+      </div>
+      <span class="rc" id="rc"></span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Trees for Northern New Mexico</h1>
+  <p>A curated reference for landscapes in the Taos region — 7,000 ft elevation, alkaline soils, cold winters, and a drying climate.</p>
+  <div class="hstats">
+    <div><span class="hstat-n" id="totalN">66</span><span class="hstat-l">Species</span></div>
+    <div><span class="hstat-n">21</span><span class="hstat-l">Native / Indigenous</span></div>
+    <div><span class="hstat-n">15</span><span class="hstat-l">Taos Top Picks</span></div>
+    <div><span class="hstat-n">Zone 6b / 7a</span><span class="hstat-l">Hardiness</span></div>
+  </div>
+</section>
+
+<div class="legend">
+  <span class="leg-lbl">Drought:</span>
+  <span class="leg-i"><span class="leg-dot dh"></span>High</span>
+  <span class="leg-i"><span class="leg-dot dm"></span>Medium</span>
+  <span class="leg-i"><span class="leg-dot dl"></span>Low</span>
+  <div class="leg-sep"></div>
+  <span class="leg-i"><span class="leg-dot nat"></span>Native / Indigenous to SW</span>
+  <span class="leg-i"><span class="leg-dot inv"></span>Invasive Tendency</span>
+  <span class="leg-i"><span class="leg-dot rec"></span>Taos Top Pick</span>
+</div>
+
+<div class="grid-wrap">
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+const TREES = [{"name": "Afghan Pine", "sci": "Pinus eldarica", "height": 70, "diameter": 30, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Pinus_eldarica_2.jpg/640px-Pinus_eldarica_2.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Evergreen; well-adapted to hot, dry conditions; fast-growing; good windbreak. May be marginal at Taos elevation (zone 6b).", "rec": false, "recReason": ""}, {"name": "Alligator Juniper", "sci": "Juniperus deppeana", "height": 50, "diameter": 20, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Juniperus_deppeana_3.jpg/640px-Juniperus_deppeana_3.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Native to SW mountains; distinctive checkered bark; excellent wildlife habitat; very long-lived.", "rec": false, "recReason": ""}, {"name": "American Elm", "sci": "Ulmus americana", "height": 80, "diameter": 75, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Ulmus_americana_1.jpg/640px-Ulmus_americana_1.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Classic vase-shaped canopy; excellent yellow fall color. Use disease-resistant cultivars ('Princeton', 'Valley Forge') only.", "rec": false, "recReason": ""}, {"name": "American Sweetgum", "sci": "Liquidambar styraciflua", "height": 50, "diameter": 40, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Liquidambar_styraciflua_autumn.jpg/640px-Liquidambar_styraciflua_autumn.jpg", "drought": "Low", "native": false, "invasive": false, "notes": "Brilliant red/purple/orange fall color; requires consistent moisture; best in low spots. Spiny seedballs a nuisance.", "rec": false, "recReason": ""}, {"name": "Apricot", "sci": "Prunus armeniaca", "height": 20, "diameter": 20, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/2009-04-21_Apricot_blooms.jpg/640px-2009-04-21_Apricot_blooms.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Ornamental spring bloom; edible fruit; susceptible to late frosts at elevation; short-lived (20\u201330 yrs).", "rec": false, "recReason": ""}, {"name": "Arizona Ash", "sci": "Fraxinus velutina", "height": 40, "diameter": 30, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Fraxinus_velutina_2.jpg/640px-Fraxinus_velutina_2.jpg", "drought": "Medium", "native": true, "invasive": false, "notes": "Fast-growing native; yellow fall color; short-lived (20\u201325 yrs); prone to ash borers. Emerald Ash Borer threat increasing.", "rec": false, "recReason": ""}, {"name": "Arizona Cypress", "sci": "Hesperocyparis arizonica", "height": 40, "diameter": 15, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Cupressus_arizonica_3.jpg/640px-Cupressus_arizonica_3.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Native evergreen; silvery-blue foliage; excellent windbreak; very drought tolerant once established. Strong vertical accent.", "rec": true, "recReason": "Striking blue-gray evergreen, native, great vertical accent and windbreak"}, {"name": "Arizona Walnut", "sci": "Juglans major", "height": 50, "diameter": 35, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Juglans_major_2.jpg/640px-Juglans_major_2.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Native to SW mountains; edible small nuts; excellent wildlife tree; allelopathic \u2014 toxic to some nearby plants (juglone).", "rec": false, "recReason": ""}, {"name": "Arizona White Oak", "sci": "Quercus arizonica", "height": 40, "diameter": 30, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Quercus_arizonica_2.jpg/640px-Quercus_arizonica_2.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Semi-evergreen native oak; good wildlife value; slow-growing but very long-lived.", "rec": false, "recReason": ""}, {"name": "Atlas Cedar", "sci": "Cedrus atlantica", "height": 50, "diameter": 40, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Cedrus_atlantica_Glauca_Kew.jpg/640px-Cedrus_atlantica_Glauca_Kew.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Striking blue-gray evergreen; graceful weeping form; excellent large-scale specimen for xeric NM landscapes.", "rec": true, "recReason": "Stunning blue evergreen, proven in NM, excellent large-scale specimen"}, {"name": "Bigtooth Maple", "sci": "Acer grandidentatum", "height": 35, "diameter": 25, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Acer_grandidentatum_2.jpg/640px-Acer_grandidentatum_2.jpg", "drought": "Medium", "native": true, "invasive": false, "notes": "Native to SW mountains; brilliant orange-red fall color; smaller than sugar maple; well-suited to high desert gardens.", "rec": true, "recReason": "Best fall color for high desert, native to SW mountains, right-sized for gardens"}, {"name": "Black Chokecherry", "sci": "Prunus virginiana var. melanocarpa", "height": 25, "diameter": 20, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Prunus_virginiana_2022.jpg/640px-Prunus_virginiana_2022.jpg", "drought": "Medium", "native": true, "invasive": true, "notes": "Native shrub/small tree; white spring flowers; dark fruit for wildlife. Spreads readily by suckers and bird-dispersed seed.", "rec": false, "recReason": ""}, {"name": "Black Pine", "sci": "Pinus nigra", "height": 45, "diameter": 25, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Pinus_nigra_subsp._nigra_Graz.jpg/640px-Pinus_nigra_subsp._nigra_Graz.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Evergreen; coarse texture; adaptable to alkaline soils; less commonly planted in NM. Self-seeds in some regions.", "rec": false, "recReason": ""}, {"name": "Black Walnut", "sci": "Juglans nigra", "height": 80, "diameter": 70, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Black_Walnut_tree.jpg/640px-Black_Walnut_tree.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Large, long-lived tree; edible nuts; excellent wildlife value. Allelopathic \u2014 suppresses many nearby plants via juglone.", "rec": false, "recReason": ""}, {"name": "Box Elder", "sci": "Acer negundo", "height": 50, "diameter": 40, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Acer_negundo_blossom.jpg/640px-Acer_negundo_blossom.jpg", "drought": "Low", "native": true, "invasive": true, "notes": "Native but weedy; fast-growing; short-lived. Hosts box elder bugs. Female trees spread prolifically by seed. Generally not recommended for planned landscapes.", "rec": false, "recReason": ""}, {"name": "Buckthorn", "sci": "Rhamnus cathartica", "height": 20, "diameter": 15, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Rhamnus_cathartica_leaves.jpg/640px-Rhamnus_cathartica_leaves.jpg", "drought": "Medium", "native": false, "invasive": true, "notes": "European species; classified as invasive in many states; spreads aggressively by bird-dispersed berries. Native alternatives strongly preferred.", "rec": false, "recReason": ""}, {"name": "Bur Oak", "sci": "Quercus macrocarpa", "height": 30, "diameter": 80, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Quercus_macrocarpa_2.jpg/640px-Quercus_macrocarpa_2.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Extremely long-lived (300+ yrs); one of the most drought-tolerant oaks; wide-spreading canopy; acorns important wildlife food.", "rec": false, "recReason": ""}, {"name": "Caddo Sugar Maple", "sci": "Acer saccharum 'Caddo'", "height": 35, "diameter": 30, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Acer_saccharum_fall_foliage.jpg/640px-Acer_saccharum_fall_foliage.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Drought-adapted sugar maple cultivar from the Southern Great Plains; excellent red/orange fall color; far better SW performance than standard sugar maple.", "rec": false, "recReason": ""}, {"name": "Cedar Elm", "sci": "Ulmus crassifolia", "height": 50, "diameter": 40, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Ulmus_crassifolia_1.jpg/640px-Ulmus_crassifolia_1.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Tough Texas/NM native range elm; yellow fall color; exceptional alkaline soil tolerance; one of the most adaptable elms for the Southwest.", "rec": false, "recReason": ""}, {"name": "Cherry Plum", "sci": "Prunus cerasifera", "height": 20, "diameter": 20, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Prunus_cerasifera_2.jpg/640px-Prunus_cerasifera_2.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Early spring bloom (white/pink); edible small fruit; good small ornamental. May sucker; purple-leaf cultivars popular.", "rec": false, "recReason": ""}, {"name": "Chinese Pistache", "sci": "Pistacia chinensis", "height": 35, "diameter": 35, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Pistacia_chinensis_fall_color.jpg/640px-Pistacia_chinensis_fall_color.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Outstanding scarlet/orange fall color; extremely drought-tolerant; one of the best medium trees for NM; dioecious \u2014 female trees produce red berries.", "rec": true, "recReason": "Outstanding fall color, extreme drought tolerance, beautiful form"}, {"name": "Chinquapin Oak", "sci": "Quercus muehlenbergii", "height": 60, "diameter": 70, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Quercus_muehlenbergii_2.jpg/640px-Quercus_muehlenbergii_2.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Large, wide-spreading oak; excellent alkaline soil tolerance; yellow-brown fall color; important acorn producer for wildlife.", "rec": false, "recReason": ""}, {"name": "Colorado Spruce", "sci": "Picea pungens", "height": 60, "diameter": 20, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Picea_pungens_glauca_1.jpg/640px-Picea_pungens_glauca_1.jpg", "drought": "Medium", "native": true, "invasive": false, "notes": "Classic NM native; blue form highly ornamental; iconic Christmas tree; important wildlife habitat. Prefers cooler, moister sites.", "rec": false, "recReason": ""}, {"name": "Crabapple", "sci": "Malus spp.", "height": 30, "diameter": 20, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Malus_sylvestris_in_bloom.jpg/640px-Malus_sylvestris_in_bloom.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Spring flower display (white/pink/red); persistent fruit for birds. Choose disease-resistant cultivars; some older varieties are susceptible to fire blight.", "rec": false, "recReason": ""}, {"name": "Deodar Cedar", "sci": "Cedrus deodara", "height": 50, "diameter": 40, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Cedrus_deodara_Manali.jpg/640px-Cedrus_deodara_Manali.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Graceful weeping evergreen; fast-growing; excellent drought-adapted specimen tree. Needs ample space for spreading habit.", "rec": true, "recReason": "Elegant evergreen specimen, graceful form, drought-adapted, excellent for Taos"}, {"name": "Eastern Redbud", "sci": "Cercis canadensis", "height": 30, "diameter": 25, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cercis_canadensis_blooming.jpg/640px-Cercis_canadensis_blooming.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Stunning magenta spring flowers before leaves; multi-season interest; good understory tree. Somewhat marginal at Taos elevation.", "rec": false, "recReason": ""}, {"name": "Eastern Redcedar", "sci": "Juniperus virginiana", "height": 60, "diameter": 15, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Juniperus_virginiana_2.jpg/640px-Juniperus_virginiana_2.jpg", "drought": "High", "native": false, "invasive": true, "notes": "Important wildlife evergreen (cedar waxwings); very tough and adaptable. Documented invasive in grasslands and prairies \u2014 spreads aggressively where fire is suppressed.", "rec": false, "recReason": ""}, {"name": "Engelmann Spruce", "sci": "Picea engelmannii", "height": 60, "diameter": 20, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Picea_engelmannii_2.jpg/640px-Picea_engelmannii_2.jpg", "drought": "Medium", "native": true, "invasive": false, "notes": "Native high-elevation spruce; beautiful blue-green color; slower growing than Colorado Spruce. Best above 8,000 ft.", "rec": false, "recReason": ""}, {"name": "English Oak", "sci": "Quercus robur", "height": 70, "diameter": 60, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Quercus_robur_1.jpg/640px-Quercus_robur_1.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Long-lived stately European oak; good wildlife value; adapts to many soils; large acorns. Susceptible to powdery mildew in some climates.", "rec": false, "recReason": ""}, {"name": "Escarpment Live Oak", "sci": "Quercus fusiformis", "height": 35, "diameter": 40, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Quercus_fusiformis_1.jpg/640px-Quercus_fusiformis_1.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Semi-evergreen TX/NM-range oak; excellent for hot, rocky sites; spreads slowly by root sprouts. Good wildlife value.", "rec": false, "recReason": ""}, {"name": "Gambel Oak", "sci": "Quercus gambelii", "height": 40, "diameter": 20, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Quercus_gambelii_1.jpg/640px-Quercus_gambelii_1.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Native SW oak; brilliant orange/red fall color; spreads naturally by rhizomes (a feature, not a flaw); essential wildlife habitat; fire-adapted.", "rec": true, "recReason": "Native, stunning fall color, wildlife habitat, very tough at elevation"}, {"name": "Ginkgo", "sci": "Ginkgo biloba", "height": 80, "diameter": 30, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Ginkgo_biloba_autumn.jpg/640px-Ginkgo_biloba_autumn.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Living fossil; outstanding golden fall color; very long-lived; no serious pests or diseases. Plant male trees only \u2014 females produce foul-smelling fruit.", "rec": false, "recReason": ""}, {"name": "Hawthorn", "sci": "Crataegus spp.", "height": 35, "diameter": 25, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Crataegus_monogyna_flowers.jpg/640px-Crataegus_monogyna_flowers.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Spring flowers; red berries; excellent wildlife habitat; thorny stems. Some species can spread by seed \u2014 favor native or sterile cultivars.", "rec": false, "recReason": ""}, {"name": "Honey Mesquite", "sci": "Prosopis glandulosa", "height": 30, "diameter": 40, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Prosopis_glandulosa_2.jpg/640px-Prosopis_glandulosa_2.jpg", "drought": "High", "native": true, "invasive": true, "notes": "Native desert tree; nitrogen-fixer; edible pods; important wildlife habitat. Can spread aggressively and displace native vegetation \u2014 documented invasive in some SW contexts.", "rec": false, "recReason": ""}, {"name": "Japanese Zelkova", "sci": "Zelkova serrata", "height": 60, "diameter": 50, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Zelkova_serrata_fall.jpg/640px-Zelkova_serrata_fall.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Excellent elm substitute; vase-shaped; good fall color (yellow/orange/red); resistant to Dutch elm disease. Well-proven urban tree.", "rec": false, "recReason": ""}, {"name": "Kentucky Coffeetree", "sci": "Gymnocladus dioicus", "height": 50, "diameter": 50, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Gymnocladus_dioicus.jpg/640px-Gymnocladus_dioicus.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Dramatic coarse winter silhouette; blue-green compound leaves; very adaptable and tough; slow to leaf out in spring. An underused gem.", "rec": true, "recReason": "Bold architectural form, very tough, blue-green summer foliage, underused gem"}, {"name": "Lacebark / Chinese Elm", "sci": "Ulmus parvifolia", "height": 40, "diameter": 35, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Ulmus_parvifolia_bark.jpg/640px-Ulmus_parvifolia_bark.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Attractive mottled exfoliating bark; semi-evergreen; fast-growing; excellent heat/drought tolerance. Distinguished from invasive Siberian Elm (U. pumila).", "rec": false, "recReason": ""}, {"name": "Mexican Pinyon Pine", "sci": "Pinus cembroides", "height": 30, "diameter": 20, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Pinus_cembroides_2.jpg/640px-Pinus_cembroides_2.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Native three-needle pinyon; edible pine nuts; good wildlife value; slow-growing. Slightly different from two-needle P. edulis.", "rec": false, "recReason": ""}, {"name": "Mexican Redbud", "sci": "Cercis canadensis var. mexicana", "height": 12, "diameter": 12, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Cercis_canadensis_var_mexicana.jpg/640px-Cercis_canadensis_var_mexicana.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Small ornamental tree; glossy dark-green wavy leaves; magenta spring flowers; very heat-adapted. Best for protected south-facing spots in Taos.", "rec": false, "recReason": ""}, {"name": "Mexican Sycamore", "sci": "Platanus mexicana", "height": 80, "diameter": 45, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Platanus_mexicana_tree.jpg/640px-Platanus_mexicana_tree.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Large fast-growing shade tree; attractive white bark; more drought-tolerant than Arizona Sycamore. Good riparian or lawn tree.", "rec": false, "recReason": ""}, {"name": "Modesto Ash", "sci": "Fraxinus velutina 'Modesto'", "height": 40, "diameter": 40, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Fraxinus_velutina_2.jpg/640px-Fraxinus_velutina_2.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Cultivar of Arizona Ash; reliable yellow fall color; fast-growing but short-lived (20\u201330 yrs). Watch for Emerald Ash Borer threat.", "rec": false, "recReason": ""}, {"name": "New Mexico Locust", "sci": "Robinia neomexicana", "height": 25, "diameter": 20, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Robinia_neomexicana_2.jpg/640px-Robinia_neomexicana_2.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Native small tree/large shrub; fragrant pink spring flowers; nitrogen-fixer; spreads by suckers \u2014 manageable in gardens. Excellent slope stabilizer.", "rec": true, "recReason": "Native, fragrant spring bloom, nitrogen-fixer, tough and xeric"}, {"name": "New Mexico Olive", "sci": "Forestiera pubescens", "height": 20, "diameter": 15, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Forestiera_pubescens_1.jpg/640px-Forestiera_pubescens_1.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Native shrub/small tree; small blue-black fruit; excellent bird habitat; soft gray-green foliage. Very xeric once established.", "rec": true, "recReason": "Native, extremely xeric, soft gray-green foliage, excellent texture contrast"}, {"name": "Northern Catalpa", "sci": "Catalpa speciosa", "height": 60, "diameter": 50, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Catalpa_speciosa_flowers.jpg/640px-Catalpa_speciosa_flowers.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Large ornamental; showy white flower clusters in early summer; long bean-like seed pods; bold tropical look. Self-seeds freely.", "rec": false, "recReason": ""}, {"name": "Oklahoma Redbud", "sci": "Cercis canadensis var. texensis 'Oklahoma'", "height": 20, "diameter": 25, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cercis_canadensis_blooming.jpg/640px-Cercis_canadensis_blooming.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Glossy dark green leaves; showy magenta spring flowers; more heat-tolerant than Eastern Redbud. Good protected microclimate tree for Taos.", "rec": false, "recReason": ""}, {"name": "Osage Orange", "sci": "Maclura pomifera", "height": 40, "diameter": 40, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Maclura_pomifera_2.jpg/640px-Maclura_pomifera_2.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Extremely tough and wind/drought resistant; large bumpy fruit; historically used for hedgerows. Thorny. Spreads by seed and root sprouts.", "rec": false, "recReason": ""}, {"name": "Persian Silk Tree / Mimosa", "sci": "Albizia julibrissin", "height": 20, "diameter": 30, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Albizia_julibrissin_flowers.jpg/640px-Albizia_julibrissin_flowers.jpg", "drought": "Medium", "native": false, "invasive": true, "notes": "Showy pink powder-puff flowers; ferny foliage; fast-growing. Listed as invasive in parts of the US \u2014 prolific seed producer, spreads readily. Short-lived (10\u201320 yrs).", "rec": false, "recReason": ""}, {"name": "Pi\u00f1on Pine", "sci": "Pinus edulis", "height": 30, "diameter": 20, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Pinus_edulis_2.jpg/640px-Pinus_edulis_2.jpg", "drought": "High", "native": true, "invasive": false, "notes": "New Mexico state tree; iconic two-needle native pine; edible pine nuts; wildlife habitat; slow-growing but very long-lived. The quintessential Taos tree.", "rec": true, "recReason": "Native, iconic, drought-proof, wildlife habitat, pairs beautifully with junipers"}, {"name": "Prairie Flameleaf Sumac", "sci": "Rhus lanceolata", "height": 25, "diameter": 20, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Rhus_lanceolata_2.jpg/640px-Rhus_lanceolata_2.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Brilliant scarlet fall color; small white summer flowers; excellent wildlife value; native to TX/NM. Spreads by rhizomes \u2014 excellent for slopes or naturalized areas.", "rec": true, "recReason": "Best red fall color of any native small tree, xeric, great in masses"}, {"name": "Purple Leaf Plum", "sci": "Prunus cerasifera 'Atropurpurea'", "height": 30, "diameter": 20, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Prunus_cerasifera_Pissardii_1.jpg/640px-Prunus_cerasifera_Pissardii_1.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Deep purple foliage all season; early pink spring bloom; ornamental accent. Short-lived in hot climates; tends to sucker.", "rec": false, "recReason": ""}, {"name": "Rocky Mountain Juniper", "sci": "Juniperus scopulorum", "height": 50, "diameter": 15, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Juniperus_scopulorum_1.jpg/640px-Juniperus_scopulorum_1.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Native SW evergreen; blue-gray berries loved by birds; excellent windbreak and year-round structure. Very drought tolerant once established.", "rec": true, "recReason": "Native evergreen, xeric, excellent structure and year-round color"}, {"name": "Scotch / Scots Pine", "sci": "Pinus sylvestris", "height": 60, "diameter": 25, "source": "Climate Ready Trees / NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Pinus_sylvestris_Sestroretsk.jpg/640px-Pinus_sylvestris_Sestroretsk.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Attractive orange-red upper bark; adaptable evergreen. May decline in hot, dry conditions. 'Scotch Pine' and 'Scots Pine' are the same species.", "rec": false, "recReason": ""}, {"name": "Shumard Oak", "sci": "Quercus shumardii", "height": 60, "diameter": 50, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Quercus_shumardii_2.jpg/640px-Quercus_shumardii_2.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Fast-growing red oak; spectacular red fall color; more heat-tolerant than northern red oaks; good alkaline soil performance.", "rec": false, "recReason": ""}, {"name": "Silver Maple", "sci": "Acer saccharinum", "height": 50, "diameter": 50, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Acer_saccharinum_leaves.jpg/640px-Acer_saccharinum_leaves.jpg", "drought": "Low", "native": false, "invasive": false, "notes": "Very fast-growing; bright silver leaf undersides; yellow fall color. High water needs; brittle wood; invasive root system can damage infrastructure.", "rec": false, "recReason": ""}, {"name": "Smoketree", "sci": "Cotinus coggygria", "height": 30, "diameter": 15, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Cotinus_coggygria_2.jpg/640px-Cotinus_coggygria_2.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Unique smoky pink/purple flower plumes summer\u2013fall; excellent purple-leaf cultivars; very xeric. Native American smoketree (C. obovatus) also excellent.", "rec": true, "recReason": "Unique summer color/texture, very xeric, purple cultivars add bold accent"}, {"name": "Sweetgum", "sci": "Liquidambar styraciflua", "height": 60, "diameter": 40, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Liquidambar_styraciflua_autumn.jpg/640px-Liquidambar_styraciflua_autumn.jpg", "drought": "Low", "native": false, "invasive": false, "notes": "Brilliant fall color (red/purple/orange); star-shaped leaves; high water needs. Spiny seed balls can be a nuisance. Same species as American Sweetgum.", "rec": false, "recReason": ""}, {"name": "Tartarian 'Hot Wing' Maple", "sci": "Acer tataricum 'GarAnn'", "height": 18, "diameter": 20, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Acer_tataricum_2.jpg/640px-Acer_tataricum_2.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Brilliant red/orange winged seeds (samaras) in summer; excellent cold-hardy compact tree for NM; good fall color; reliable Zone 6 performer.", "rec": true, "recReason": "Spectacular red samaras, cold-hardy, compact size suits most gardens"}, {"name": "Texas Persimmon", "sci": "Diospyros texana", "height": 15, "diameter": 15, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Diospyros_texana_1.jpg/640px-Diospyros_texana_1.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Small multi-trunk tree; smooth silver-gray exfoliating bark; sweet black fruit loved by wildlife. Extremely xeric. Beautiful as a specimen.", "rec": false, "recReason": ""}, {"name": "Texas Red Oak", "sci": "Quercus buckleyi", "height": 40, "diameter": 30, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Quercus_buckleyi_1.jpg/640px-Quercus_buckleyi_1.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Native red oak of TX Hill Country/NM range; reliable red fall color; tolerates alkaline soils better than most red oaks. Good NM choice.", "rec": false, "recReason": ""}, {"name": "Texas Redbud", "sci": "Cercis canadensis var. texensis", "height": 20, "diameter": 20, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cercis_canadensis_blooming.jpg/640px-Cercis_canadensis_blooming.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Heat-tolerant redbud; glossy leaves; magenta spring flowers. Better for southern NM than Taos; marginally cold-hardy at elevation.", "rec": false, "recReason": ""}, {"name": "Two-Needle Pinyon", "sci": "Pinus edulis", "height": 20, "diameter": 15, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Pinus_edulis_2.jpg/640px-Pinus_edulis_2.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Same species as Pi\u00f1on Pine \u2014 NM state tree; listed separately in source guide. Edible pine nuts; iconic native; slow-growing and very long-lived.", "rec": false, "recReason": ""}, {"name": "Washington Hawthorn", "sci": "Crataegus phaenopyrum", "height": 30, "diameter": 25, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Crataegus_phaenopyrum_1.jpg/640px-Crataegus_phaenopyrum_1.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "White spring flowers; persistent red berries into winter; excellent wildlife habitat; thorny stems. Good multi-season interest.", "rec": false, "recReason": ""}, {"name": "Western Redbud", "sci": "Cercis occidentalis", "height": 15, "diameter": 12, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cercis_occidentalis_1.jpg/640px-Cercis_occidentalis_1.jpg", "drought": "High", "native": false, "invasive": false, "notes": "Small multi-stem tree/shrub; magenta spring flowers; round blue-green leaves; very xeric once established. Native to CA/NV, adaptable in NM.", "rec": false, "recReason": ""}, {"name": "Western Soapberry", "sci": "Sapindus saponaria var. drummondii", "height": 40, "diameter": 30, "source": "NMSU Guide H-328", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Sapindus_saponaria_var._drummondii_1.jpg/640px-Sapindus_saponaria_var._drummondii_1.jpg", "drought": "High", "native": true, "invasive": false, "notes": "Native SW tree; bright yellow fall color; translucent amber berries; historically used as soap. Underused and underappreciated native gem.", "rec": true, "recReason": "Underused native, good fall color, xeric, interesting fruit"}, {"name": "Wild Plum", "sci": "Prunus americana", "height": 15, "diameter": 15, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Prunus_americana_2.jpg/640px-Prunus_americana_2.jpg", "drought": "Medium", "native": true, "invasive": false, "notes": "Native thicket-forming small tree; white spring flowers; small tart fruit; excellent wildlife habitat. Spreads by suckers \u2014 great for naturalized edges.", "rec": false, "recReason": ""}, {"name": "Yaupon Holly", "sci": "Ilex vomitoria", "height": 15, "diameter": 10, "source": "Climate Ready Trees", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Ilex_vomitoria_2.jpg/640px-Ilex_vomitoria_2.jpg", "drought": "Medium", "native": false, "invasive": false, "notes": "Evergreen native holly of the SE US; red berries; very adaptable; one of few hollies tolerant of alkaline soils. Marginally hardy at Taos elevation.", "rec": false, "recReason": ""}];
+
+let q='', recOnly=false, natOnly=false, invOnly=false;
+const drought = new Set(['High','Medium','Low']);
+
+function render(){
+  const grid = document.getElementById('grid');
+  const ql = q.toLowerCase();
+  const filtered = TREES.filter(t=>{
+    if(recOnly && !t.rec) return false;
+    if(natOnly && !t.native) return false;
+    if(invOnly && !t.invasive) return false;
+    if(!drought.has(t.drought)) return false;
+    if(ql && !t.name.toLowerCase().includes(ql) && !t.sci.toLowerCase().includes(ql)) return false;
+    return true;
+  });
+  document.getElementById('rc').textContent = filtered.length===TREES.length ? TREES.length+' trees' : filtered.length+' of '+TREES.length;
+
+  if(!filtered.length){
+    grid.innerHTML=`<div class="empty"><svg width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><h3>No trees found</h3><p>Adjust your filters or search term.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map((t,i)=>{
+    const hasImg = !!t.img;
+    const photo = hasImg
+      ? `<img src="${t.img}" alt="${t.name}" loading="lazy" onerror="this.outerHTML='<div class=no-photo><svg width=36 height=36 fill=none stroke=currentColor stroke-width=1.5 viewBox=\"0 0 24 24\"><path d=\"M17 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\"/><rect x=\"9\" y=\"11\" width=\"12\" height=\"10\" rx=\"2\"/></svg><span>Photo unavailable</span></div>'">`
+      : `<div class="no-photo"><svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><rect x="9" y="11" width="12" height="10" rx="2"/></svg><span>No photo available</span></div>`;
+
+    const recBadge   = t.rec     ? `<div class="pbadge rec">★ Taos Pick</div>` : '';
+    const invBadge   = t.invasive? `<div class="pbadge inv">⚠ Invasive Tendency</div>` : '';
+    const natBadge   = t.native  ? `<div class="pbadge nat${t.invasive?' has-inv':''}">🌿 Native</div>` : '';
+    const dbadge     = `<div class="drought-badge ${t.drought}">${t.drought} Drought</div>`;
+
+    const natTag = t.native   ? `<span class="tag nat">🌿 Native / Indigenous</span>` : '';
+    const invTag = t.invasive ? `<span class="tag inv">⚠ Invasive Tendency</span>` : '';
+    const dTag   = `<span class="tag d${t.drought[0].toLowerCase()}">${t.drought} Drought Tolerance</span>`;
+
+    const recBox = t.rec && t.recReason ? `<div class="rec-box">★ ${t.recReason}</div>` : '';
+
+    return `<div class="card${t.rec?' is-rec':''}${t.invasive?' is-inv':''}" style="animation-delay:${Math.min(i*.028,.55)}s">
+  <div class="photo">
+    ${photo}
+    ${recBadge}${invBadge}${natBadge}${dbadge}
+  </div>
+  <div class="cbody">
+    <div>
+      <div class="cname">${t.name}</div>
+      <div class="csci">${t.sci}</div>
+    </div>
+    <div class="tags">${natTag}${invTag}${dTag}</div>
+    ${recBox}
+    <div class="stats">
+      <div class="stat"><span class="stat-l">Height</span><span class="stat-v">${t.height}<span class="stat-u"> ft</span></span></div>
+      <div class="stat"><span class="stat-l">Spread</span><span class="stat-v">${t.diameter}<span class="stat-u"> ft</span></span></div>
+    </div>
+    <div class="cnotes">${t.notes}</div>
+    <div class="csrc">Source: ${t.source}</div>
+  </div>
+</div>`;
+  }).join('');
+}
+
+// controls
+document.getElementById('srch').addEventListener('input',e=>{q=e.target.value.trim();render()});
+
+function tog(btn, flag, cls){
+  btn.addEventListener('click',()=>{
+    if(flag==='rec')recOnly=!recOnly,btn.className='fbtn'+(recOnly?' act-gold':'');
+    if(flag==='nat')natOnly=!natOnly,btn.className='fbtn'+(natOnly?' act-green':'');
+    if(flag==='inv')invOnly=!invOnly,btn.className='fbtn'+(invOnly?' act-red':'');
+    render();
+  });
+}
+tog(document.getElementById('recBtn'),'rec');
+tog(document.getElementById('natBtn'),'nat');
+tog(document.getElementById('invBtn'),'inv');
+
+document.getElementById('dchips').addEventListener('click',e=>{
+  const c=e.target.closest('.dchip');if(!c)return;
+  const d=c.dataset.d;
+  if(drought.has(d)){if(drought.size>1){drought.delete(d);c.classList.remove('on')}}
+  else{drought.add(d);c.classList.add('on')}
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
